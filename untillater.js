@@ -17,11 +17,28 @@ if (typeof require !== 'undefined') {
     *
     * @param date Date After which to call `action`
     * @param action function
-    * @param element string Selector for the element to fill
+    * @param selector string Selector for the selector to fill
     */
-   UntilLater = function(date, action, element) {
-      if (element === undefined) {
-         element = '#jsLater';
+   UntilLater = function(date, action, selector) {
+      if (selector === undefined) {
+         selector = '#jsLater';
+      }
+
+      this.action = action;
+      this.element = $(selector);;
+      this.element.empty();
+
+      var now = new Date();
+      if (date <= now) {
+         this.runTargetAction();
+      } else {
+         this.element.html('waiting...');
+      }
+   };
+
+   UntilLater.prototype = {
+      runTargetAction: function() {
+         this.action();
       }
    };
 
