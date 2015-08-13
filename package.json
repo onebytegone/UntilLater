@@ -1,0 +1,29 @@
+{
+  "name": "untillater",
+  "title": "UntilLater",
+  "version": "0.0.1",
+  "description": "A library to show a countdown",
+  "main": "untillater.js",
+  "scripts": {
+    "lint": "jshint untillater.js",
+    "prebuild": "npm run lint && npm run test",
+    "build": "uglifyjs untillater.js -c --source-map untillater-min.map -o untillater-min.js"
+  },
+  "author": "Ethan Smith",
+  "license": "MIT",
+  "homepage": "https://github.com/onebytegone/UntilLater",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onebytegone/UntilLater"
+  },
+  "bugs": {
+    "url": "https://github.com/onebytegone/UntilLater/issues"
+  },
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "uglify-js": "^2.4.23"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
