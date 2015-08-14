@@ -31,20 +31,44 @@ var $ = lib($, 'jquery'),
       }
 
       this.action = action;
-      this.element = $(selector);;
+      this.element = $(selector);
       this.element.empty();
+      this.targetDate = date;
 
-      var now = new Date();
-      if (date <= now) {
+      if (this.isPastTime()) {
          this.runTargetAction();
       } else {
-         this.element.html('waiting...');
+         this.updateTimeDisplay();
+         this.timer = setInterval(this.timerTicked.bind(this), 1000);
       }
    };
 
    UntilLater.prototype = {
       runTargetAction: function() {
          this.action();
+      },
+
+      timeRemaining: function() {
+         return moment(this.targetDate).countdown().toString();
+      },
+
+      updateTimeDisplay: function() {
+         this.element.html(this.timeRemaining());
+      },
+
+      isPastTime: function() {
+         var now = new Date();
+         return this.targetDate <= now;
+      },
+
+      timerTicked: function() {
+         if (this.isPastTime()) {
+            clearInterval(this.timer);
+            this.runTargetAction();
+            return;
+         }
+
+         this.updateTimeDisplay();
       }
    };
 
