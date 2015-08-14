@@ -2,11 +2,17 @@
 //  (c) 2015 Ethan Smith
 //  UntilLater may be freely distributed under the MIT license.
 
-// Import JQuery
-var $ = $ || undefined;
-if (typeof require !== 'undefined') {
-   $ = require("jquery");
-}
+
+var lib = function(global, name) {
+   if (typeof require !== 'undefined') {
+      return require(name);
+   }
+   return global || undefined;
+};
+
+// Import libraries
+var $ = lib($, 'jquery'),
+    moment = lib(moment, 'moment');
 
 (function() {
    var root = this,
