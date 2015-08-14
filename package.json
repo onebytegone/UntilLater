@@ -24,6 +24,9 @@
     "uglify-js": "^2.4.23"
   },
   "dependencies": {
-    "jquery": "^2.1.4"
+    "countdown": "^2.6.0",
+    "jquery": "^2.1.4",
+    "moment": "^2.10.6",
+    "moment-countdown": "0.0.3"
   }
 }
