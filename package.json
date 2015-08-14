@@ -6,7 +6,7 @@
   "main": "untillater.js",
   "scripts": {
     "lint": "jshint untillater.js",
-    "prebuild": "npm run lint && npm run test",
+    "prebuild": "npm run lint",
     "build": "uglifyjs untillater.js -c --source-map untillater-min.map -o untillater-min.js"
   },
   "author": "Ethan Smith",
